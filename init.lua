@@ -21,14 +21,19 @@ end
 require "lazy_setup"
 require "polish"
 
-vim.cmd("colorscheme tokyonight-night")
-vim.g.neovide_scale_factor = 0.8
+vim.o.termguicolors = true
+vim.cmd "colorscheme rose-pine"
 -- git clone https://github.com/echevarriandre/mononoki-ligatures
-vim.o.guifont = "Liga mononoki:h14"
-vim.g.neovide_cursor_vfx_mode = "wireframe"
 
-vim.api.nvim_set_keymap("n", "<leader>m", ":ASToggle<CR>", {})
+-- vim.g.codeium_no_map_tab = true
+-- vim.api.nvim_set_keymap("i", "<C-l>", "<Plug>(codeium-accept)", { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap("n", "<leader>m", ":ASToggle<CR>", {})
 vim.api.nvim_set_keymap("n", ":", "<cmd>FineCmdline<CR>", { noremap = true })
+
+vim.keymap.set("n", "<c-k>", ":wincmd k<CR>")
+vim.keymap.set("n", "<c-j>", ":wincmd j<CR>")
+vim.keymap.set("n", "<c-h>", ":wincmd h<CR>")
+vim.keymap.set("n", "<c-l>", ":wincmd l<CR>")
 
 vim.keymap.set("t", "<c-r>", function()
   local next_char_code = vim.fn.getchar()
@@ -37,6 +42,6 @@ vim.keymap.set("t", "<c-r>", function()
 end, { expr = true })
 
 -- require("themery").setup {
-  -- themes = { "gruvbox" }, -- Your list of installed colorschemes.
-  -- livePreview = true, -- Apply theme while picking. Default to true.
+-- themes = { "gruvbox" }, -- Your list of installed colorschemes.
+-- livePreview = true, -- Apply theme while picking. Default to true.
 -- }

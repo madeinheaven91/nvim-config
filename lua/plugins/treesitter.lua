@@ -5,9 +5,8 @@ return {
   "nvim-treesitter/nvim-treesitter",
   opts = {
     ensure_installed = {
-      "lua",
-      "vim",
-      "hurl",
+      "rust"
+      -- "hurl",
       -- add more arguments for adding more treesitter parsers
     },
   },

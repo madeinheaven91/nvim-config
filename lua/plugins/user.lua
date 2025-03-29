@@ -6,6 +6,8 @@ return {
 
   -- == Examples of Adding Plugins ==
   "pocco81/auto-save.nvim",
+  "chrisdone-archive/hindent",
+  "powerman/vim-plugin-ruscmd",
   {
     "mistweaverco/kulala.nvim",
     config = function()
@@ -21,17 +23,14 @@ return {
     config = function() require("lsp_signature").setup() end,
   },
 
-  {
-    "Exafunction/codeium.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "hrsh7th/nvim-cmp",
-    },
-    config = function() require("codeium").setup {} end,
-  },
-
   "VonHeikemen/fine-cmdline.nvim",
-
+  {
+    "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    build = "cd app && npm install",
+    init = function() vim.g.mkdp_filetypes = { "markdown" } end,
+    ft = { "markdown" },
+  },
   -- "zaldih/themery.nvim",
   -- == Examples of Overriding Plugins ==
 
@@ -55,50 +54,49 @@ return {
     end,
   },
 
-  {
-    "jellydn/hurl.nvim",
-    dependencies = {
-      "MunifTanjim/nui.nvim",
-      "nvim-lua/plenary.nvim",
-      "nvim-treesitter/nvim-treesitter",
-    },
-    ft = "hurl",
-    opts = {
-      -- Show debugging info
-      debug = false,
-      -- Show notification on run
-      show_notification = false,
-      -- Show response in popup or split
-      mode = "popup",
-      -- Default formatter
-      formatters = {
-        json = { "jq" }, -- Make sure you have install jq in your system, e.g: brew install jq
-        html = {
-          "prettier", -- Make sure you have install prettier in your system, e.g: npm install -g prettier
-          "--parser",
-          "html",
-        },
-        xml = {
-          "tidy", -- Make sure you have installed tidy in your system, e.g: brew install tidy-html5
-          "-xml",
-          "-i",
-          "-q",
-        },
-      },
-    },
-    keys = {
-      -- Run API request
-      { "<leader>A", "<cmd>HurlRunner<CR>", desc = "Run All requests" },
-      { "<leader>a", "<cmd>HurlRunnerAt<CR>", desc = "Run Api request" },
-      { "<leader>te", "<cmd>HurlRunnerToEntry<CR>", desc = "Run Api request to entry" },
-      { "<leader>tm", "<cmd>HurlToggleMode<CR>", desc = "Hurl Toggle Mode" },
-      { "<leader>tv", "<cmd>HurlVerbose<CR>", desc = "Run Api in verbose mode" },
-      -- Run Hurl request in visual mode
-      { "<leader>h", ":HurlRunner<CR>", desc = "Hurl Runner", mode = "v" },
-    },
-  },
+  -- {
+  --   "jellydn/hurl.nvim",
+  --   dependencies = {
+  --     "MunifTanjim/nui.nvim",
+  --     "nvim-lua/plenary.nvim",
+  --     "nvim-treesitter/nvim-treesitter",
+  --   },
+  --   ft = "hurl",
+  --   opts = {
+  --     -- Show debugging info
+  --     debug = false,
+  --     -- Show notification on run
+  --     show_notification = false,
+  --     -- Show response in popup or split
+  --     mode = "popup",
+  --     -- Default formatter
+  --     formatters = {
+  --       json = { "jq" }, -- Make sure you have install jq in your system, e.g: brew install jq
+  --       html = {
+  --         "prettier", -- Make sure you have install prettier in your system, e.g: npm install -g prettier
+  --         "--parser",
+  --         "html",
+  --       },
+  --       xml = {
+  --         "tidy", -- Make sure you have installed tidy in your system, e.g: brew install tidy-html5
+  --         "-xml",
+  --         "-i",
+  --         "-q",
+  --       },
+  --     },
+  --   },
+  --   keys = {
+  --     -- Run API request
+  --     { "<leader>A", "<cmd>HurlRunner<CR>", desc = "Run All requests" },
+  --     { "<leader>a", "<cmd>HurlRunnerAt<CR>", desc = "Run Api request" },
+  --     { "<leader>te", "<cmd>HurlRunnerToEntry<CR>", desc = "Run Api request to entry" },
+  --     { "<leader>tm", "<cmd>HurlToggleMode<CR>", desc = "Hurl Toggle Mode" },
+  --     { "<leader>tv", "<cmd>HurlVerbose<CR>", desc = "Run Api in verbose mode" },
+  --     -- Run Hurl request in visual mode
+  --     { "<leader>h", ":HurlRunner<CR>", desc = "Hurl Runner", mode = "v" },
+  --   },
+  -- },
 
-  -- You can disable default plugins as follows:
   -- { "max397574/better-escape.nvim", enabled = false },
 
   -- You can also easily customize additional setup of plugins that is outside of the plugin's setup call
