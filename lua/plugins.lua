@@ -17,6 +17,7 @@ return {
 			{ src = 'https://github.com/norcalli/nvim-colorizer.lua' },
 			{ src = "https://github.com/folke/which-key.nvim" },
 			{ src = "https://github.com/goolord/alpha-nvim" },
+			{ src = "https://github.com/MeanderingProgrammer/render-markdown.nvim" },
 		})
 
 		local greeting = [[
